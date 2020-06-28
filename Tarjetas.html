@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Tarjetas de felicitación</title>
+	<link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap" rel="stylesheet">
+</head>
+<body id="body">
+	<center>
+	<header>
+		<h1>CREA TU TARJETA DE FELICITACIÓN</h1>
+		<br><br>
+	</header>
+	<section id="tema">
+		<img src="Imágenes/corazón.png" width="35px" height="35px">
+		<h2>Elige un tema:</h2>
+		<input type="radio" name="tema" value="sanValentin" onclick="temaValentin()">San Valentín
+		<input type="radio" name="tema" value="cumpleaños" onclick="temaCumpleaños()">Feliz Cumpleaños
+		<input type="radio" name="tema" value="motivacion" onclick="temaMotivacion()">Motivación
+	</section>
+	<br><br><br><br><br>
+	<section id="imagen">
+		<img src="Imágenes/cámara.png" width="50px" height="40px">
+		<h2>Elige una imagen:</h2>
+		<img src="Imágenes/sanvalentin.webp" width="200px" height="150px"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+		<img src="Imágenes/cumpleaños.webp" width="200px" height="150px"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+		<img src="Imágenes/motivación.webp" width="200px" height="150px">
+		<br>
+		<input type="radio" name="imagen" value="imgValentin" onclick="imagenValentin()">San Valentín &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+		<input type="radio" name="imagen" value="imgCumpleaños" onclick="imagenCumpleaños()">Feliz Cumpleaños &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+		<input type="radio" name="imagen" value="imgMotivacion" onclick="imagenMotivacion()">Motivación
+	</section>
+	<br><br><br><br><br>
+	<section id="texto">
+		<img src="Imágenes/lapiz.jpg" width="60px" height="60px">
+		<h2>Título</h2>
+		<form>
+		<h4>Selecciona el color de letra</h4>
+		<input type="color" name="color" id="cambiocolorletra" onclick="setColorLetra(color);"/><br><br><br>
+		<input type="text" size="50" maxlength="80" placeholder="Nombre de la persona a felicitar" name="nombre"  onchange="document.getElementById('destinatario').innerHTML=destinatario=this.value"><br><br>
+		<input type="text" size="70" maxlength="80" placeholder="Título" name="titulo" onchange="document.getElementById('titulo').innerHTML=titulo=this.value"><br><br>
+		<input type="text" size="70" maxlength="80" placeholder="Subtítulo" name="subtitulo" onchange="document.getElementById('subtitulo').innerHTML=subtitulo=this.value"><br><br>
+		<input type="text" size="50" maxlength="80" placeholder="Nombre de quien envía la tarjeta" name="nombreR" onchange="document.getElementById('remitente').innerHTML=remitente=this.value"><br><br>
+		<textarea id="mensaje" name="message" placeholder="Escribe el mensaje de la tarjeta" onchange="document.getElementById('mensajeTarjeta').innerHTML=mensajeTarjeta=this.value"></textarea><br><br>
+		<textarea id="despedida" name="message" placeholder="Escribe una despedida" onchange="document.getElementById('despedidaTarjeta').innerHTML=despedidaTarjeta=this.value"></textarea>
+		</form>
+	</section>
+	<br><br><br><br><br>
+	<section id="color">
+		<img src="Imágenes/pintura.png" width="55px" height="55px">
+		<h2>Color</h2>
+		<h4>Selecciona el color de la tarjeta:</h4><br>
+		<input type="color" name="colorB" id="cambiocolor" onclick="setColor(color);"/>
+	</section>
+	<br><br><br>
+		<input type="button" value="Crear tarjeta" onclick="setGenerar()"/>
+	</center>
+
+		<br><br><br><br><br>
+
+		<div id="flotante" style="display:none;">
+		<section id="tarjetaFinal">
+			<center><h1 id="titulo" class="titulo"></h1>
+			<h3 id="subtitulo" class="subtitulo"></h3></center>
+			<center><img id="muestra" src="Imágenes/imagen.png"></center>
+			<h4 id="destinatario" class="destinatario"></h4>
+			<p id="mensajeTarjeta" class="mensajeTarjeta"></p>
+			<br>
+			<p id="despedidaTarjeta" class="despedidaTarjeta"></p>
+			<p align="right" id="remitente" class="remitente"></p>
+			<div>
+				<audio id="sonido" src="Audio/cancion3.mp3" controls loop></audio>
+			</div>
+			<br><br>
+			<p align="left" id="fecha"></p>
+		</section>
+		</div>
+	<script type="text/javascript">
+		function setGenerar() {
+            div = document.getElementById("flotante");
+            div.style.display = '';
+        }
+		function temaValentin(){
+			document.getElementById("tarjetaFinal").style.fontFamily='Love Ya Like A Sister', cursive;
+		}
+		function temaCumpleaños(){
+			document.getElementById("tarjetaFinal").style.fontFamily='Lobster Two', cursive;
+		}
+		function temaMotivacion(){
+			document.getElementById("tarjetaFinal").style.fontFamily='Merienda', cursive;
+		}
+		function imagenValentin(){
+			document.getElementById("muestra").src="Imágenes/sanvalentin.webp";
+		}
+		function imagenCumpleaños(){
+			document.getElementById("muestra").src="Imágenes/cumpleaños.webp";
+		}
+		function imagenMotivacion(){
+			document.getElementById("muestra").src="Imágenes/motivación.webp";
+		}
+		function setColor(){
+			let color=document.getElementById("cambiocolor").value;
+			document.getElementById("tarjetaFinal").style.backgroundColor= color;
+		}
+		function setColorLetra(){
+			let color=document.getElementById("cambiocolorletra").value;
+			document.getElementById("tarjetaFinal").style.color= color;
+		}
+
+		var meses= new Array("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre");
+		var dias= new Array("domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado");
+		var f= new Date();
+		document.getElementById("fecha").innerHTML=dias[f.getDay()]+", "+f.getDate()+" de "+meses[f.getMonth()]+" del "+f.getFullYear();
+	</script>
+</body>
+</html>

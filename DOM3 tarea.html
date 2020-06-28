@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Estructura HTML y DOM</title>
+</head>
+<body onload="load();">
+	<header id="encabezado">
+		<ol id="lista">
+			<li>opción 1</li>
+			<li>opción 2</li>
+			<li>opción 3</li>
+		</ol>
+		<button type="button" onclick="agregar();">Agregar una opción</button>
+	</header>
+	<script type="text/javascript">
+			var tags;
+			function load(){
+				tags=document.getElementsByTagName("li");
+			}
+		function agregar(){
+			var elemento=document.createElement("li");
+			var texto=document.createTextNode("opción "+(tags.length+1));
+			elemento.appendChild(texto);
+			var lista=document.getElementById("lista");
+			lista.appendChild(elemento);
+			load();
+		}
+	</script>
+</body>
+</html>

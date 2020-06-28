@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Imágenes y DOM</title>
+</head>
+<body>
+	<figure>
+		<img id="chica" src="chica.jpg" style="border:5px solid #f97300" title="probando bordes" width="500px" height="400px">
+	</figure>
+	<form name="formu">
+		<input type="button" value="Cambiar a 150px de ancho de borde" onclick="setBorderWidth(50);"/>
+		<input type="button" value="Cambiar a 20px de ancho de borde" onclick="setBorderWidth(20);"/>
+		<input type="color" name="colorB" id="cambiocolor" onclick="setBorderColor(colorB);" />
+		<p>Selecciona el tipo de borde</p>
+		<input type="button" value="Puntos .." onclick="setDotted()"/>
+		<input type="button" value="guiones --" onclick="setDashed()"/>
+		<input type="button" value="Doble" onclick="setDouble()"/>
+	</form>
+	<script type="text/javascript">
+		function setBorderWidth(x){
+			document.getElementById("chica").style.borderWidth=x+"px";
+		}
+		function setBorderColor(chica){
+			let color=document.getElementById("cambiocolor").value;
+			document.getElementById("chica").style.borderColor= color;
+		}
+		function setDotted(){
+			document.getElementById("chica").style.borderStyle="dotted";
+		}
+		function setDashed(){
+			document.getElementById("chica").style.borderStyle="dashed";
+		}
+		function setDouble(){
+			document.getElementById("chica").style.borderStyle="double";
+		}
+	</script>
+</body>
+</html>
